@@ -1,11 +1,10 @@
-from rediscluster import StrictRedisCluster
+from rediscluster import RedisCluster
 import time
 from flask import Flask
 
-
 app = Flask(__name__)
 startup_nodes = [{"host": "redis-cluster", "port": "6379"}]
-cache = StrictRedisCluster(startup_nodes=startup_nodes, decode_responses=True)
+cache = RedisCluster(startup_nodes=startup_nodes, decode_responses=True)
 
 
 def get_hit_count():
